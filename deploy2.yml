@@ -1,0 +1,30 @@
+#To have 4 pods and 2 services 
+#If we browse to 32004 will opens another site 
+#Each site will have 2 pods running and one service 
+#The other site from nginx port 80
+
+# looks for Kubernetes configuration in all .yaml, .yml, and .json files in <directory> and passes it to apply.
+#kubectl apply -f <directory>
+
+#kubectl expose deployment deploy2.yml --type=32004 --name=nginx
+
+# Run this command on the node where kubelet is running
+#mkdir -p /etc/kubernetes/manifests/
+#cat <<EOF >/etc/kubernetes/manifests/deploy.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: 32003
+  labels:
+    role: myrole
+spec:
+  replicas: 2
+  containers:
+    - name: web
+      image: nginx
+      ports:
+        - name: nginx
+          containerPort: 80
+          protocol: TCP
+          
+          
