@@ -1,0 +1,33 @@
+#To have 4 pods and 2 services 
+#If we browse to 32003 will open one site 
+#If we browse to 32004 will opens another site 
+#Each site will have 2 pods running and one service 
+#One site from  hothaifaz11/react-app in port 3000
+#The other site from nginx port 80
+#upload the files to your github and attach the  url 
+
+# looks for Kubernetes configuration in all .yaml, .yml, and .json files in <directory> and passes it to apply.
+#kubectl apply -f <directory>
+
+
+# Run this command on the node where kubelet is running
+#mkdir -p /etc/kubernetes/manifests/
+#cat <<EOF >/etc/kubernetes/manifests/deploy.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: 32003
+  labels:
+    role: myrole
+spec:
+  replicas: 2
+  containers:
+    - name: web
+      image: hothaifaz11/react-app
+      ports:
+        - name: hothaifaz11/react-app
+          containerPort: 3000
+          protocol: TCP
+      
+
+
